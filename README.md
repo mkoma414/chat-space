@@ -1,24 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## データベースの設計
 
-Things you may want to cover:
+###usersテーブル
 
-* Ruby version
+|カラム    |タイプ  |NOT NULL制約|一意性制約|外部キー制約|INDEX|
+|:-------|-------|-----------|--------|----------|----:|
+|name    |string |○          |×       |-         |×    |
+|email   |string |○          |○       |-         |×    |
+|password|string |○          |×       |-         |×    |
+|group_id|integer|○          |×       |○         |×    |
 
-* System dependencies
 
-* Configuration
+### groupsテーブル
 
-* Database creation
+|カラム    |タイプ   |NOT NULL制約|一意性制約|外部キー制約|INDEX|
+|:-------|--------|-----------|--------|----------|----:|
+|name    |string  |○          |○       |-         |×    |
+|user_id |integer |○          |×       |○         |×    |
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### users_groupsテーブル
 
-* Deployment instructions
+|カラム    |タイプ   |NOT NULL制約|一意性制約|外部キー制約|INDEX|
+|:--------|--------|-----------|--------|----------|----:|
+|users_id |integer |○          |×       |○         |○    |
+|groups_id|integer |○          |×       |○         |○    |
 
-* ...
+
+### messagesテーブル
+
+|カラム    |タイプ   |NOT NULL制約|一意性制約|外部キー制約|INDEX|
+|:-------|--------|-----------|--------|----------|----:|
+|body    |text    |×          |×       |○         |○    |
+|image   |string  |×          |×       |○         |○    |
+|group_id|integer |○          |×       |○         |×    |
+|user_id |integer |○          |×       |○         |×    |
+
