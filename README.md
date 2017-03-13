@@ -9,11 +9,11 @@
 |name    |string    |○          |×       |-         |×    |
 |email   |string    |○          |○       |-         |×    |
 |password|string    |○          |×       |-         |×    |
-|group_id|references|○          |×       |○         |×    |
 
 ```ruby:リレーション
-has_many :users_groups
-has_many :groups, through: :users_groups
+has_many :user_groups
+has_many :groups, through: :user_groups
+has_many :messages
 ```
 
 ### groupsテーブル
@@ -21,14 +21,14 @@ has_many :groups, through: :users_groups
 |カラム    |タイプ     |NOT NULL制約|一意性制約|外部キー制約|INDEX|
 |:-------|-----------|-----------|--------|----------|----:|
 |name    |string     |○          |○       |-         |×    |
-|user_id |references |○          |×       |○         |×    |
 
 ```ruby:リレーション
-has_many :users_groups
-has_many :users, through: :users_groups
+has_many :user_groups
+has_many :users, through: :user_groups
+has_many :messages
 ```
 
-### users_groupsテーブル
+### user_groupsテーブル
 
 |カラム    |タイプ     |NOT NULL制約|一意性制約|外部キー制約|INDEX|
 |:--------|----------|-----------|--------|----------|----:|
