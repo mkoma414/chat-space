@@ -1,24 +1,56 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## データベースの設計
 
-Things you may want to cover:
+###usersテーブル
 
-* Ruby version
+|カラム    |タイプ     |NOT NULL制約|一意性制約|外部キー制約|INDEX|
+|:-------|----------|-----------|--------|----------|----:|
+|name    |string    |○          |×       |-         |×    |
+|email   |string    |○          |○       |-         |×    |
+|password|string    |○          |×       |-         |×    |
 
-* System dependencies
+```ruby:リレーション
+has_many :user_groups
+has_many :groups, through: :user_groups
+has_many :messages
+```
 
-* Configuration
+### groupsテーブル
 
-* Database creation
+|カラム    |タイプ     |NOT NULL制約|一意性制約|外部キー制約|INDEX|
+|:-------|-----------|-----------|--------|----------|----:|
+|name    |string     |○          |○       |-         |×    |
 
-* Database initialization
+```ruby:リレーション
+has_many :user_groups
+has_many :users, through: :user_groups
+has_many :messages
+```
 
-* How to run the test suite
+### user_groupsテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+|カラム    |タイプ     |NOT NULL制約|一意性制約|外部キー制約|INDEX|
+|:--------|----------|-----------|--------|----------|----:|
+|user_id |references|○          |×       |○         |○    |
+|group_id|references|○          |×       |○         |○    |
 
-* Deployment instructions
+```ruby:リレーション
+belongs_to :user
+belongs_to :group
+```
 
-* ...
+### messagesテーブル
+
+|カラム    |タイプ   |NOT NULL制約|一意性制約|外部キー制約|INDEX|
+|:-------|----------|-----------|--------|----------|----:|
+|body    |text      |×          |×       |○         |○    |
+|image   |string    |×          |×       |○         |○    |
+|group_id|references|○          |×       |○         |×    |
+|user_id |references|○          |×       |○         |×    |
+
+```ruby:リレーション
+belongs_to :user
+belongs_to :group
+```
+
