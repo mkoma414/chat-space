@@ -32,8 +32,8 @@ has_many :messages
 
 |カラム    |タイプ     |NOT NULL制約|一意性制約|外部キー制約|INDEX|
 |:--------|----------|-----------|--------|----------|----:|
-|users_id |references|○          |×       |○         |○    |
-|groups_id|references|○          |×       |○         |○    |
+|user_id |references|○          |×       |○         |○    |
+|group_id|references|○          |×       |○         |○    |
 
 ```ruby:リレーション
 belongs_to :user
