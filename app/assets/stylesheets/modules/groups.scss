@@ -91,7 +91,7 @@
       color: #38AEF0;
       float: right;
       line-height: 40px;
-      texa-align: center;
+      text-align: center;
       box-sizing: border-box;
     }
   }
@@ -123,7 +123,7 @@
     width: 100%;
     box-sizing: border-box;
     bottom: 0;
-    positon: fixed;
+    position: fixed;
     @include clearfix;
 
     &__text-area{
@@ -159,7 +159,7 @@
       box-sizing: border-box;
       height: 50px;
       width: 100px;
-      float: right;
+      float: left;
       background-color: #38AEF0;
       color: #FFFFFF;
       margin: 20px 40px 0 15px;
