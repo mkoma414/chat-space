@@ -134,22 +134,27 @@
       margin: 20px 0 20px 50px;
 
       &--text{
-        float: left;
+        // float: left;
         height: 50px;
-        width: calc(100vw - 555px);
+        width: calc(100vw - 505px);
         line-height: 50px;
-
+        border: none;
+        resize: none;
         background-color: #FFFFFF;
         box-sizing: border-box;
         padding-left: 10px;
       }
       &--pict-icon{
-        float: right;
-        width: 50px;
-        height: 50px;
+        position: absolute;
+        // float: right;
+        right: 460px;
+        top: 30px;
+        z-index: 100;
+        width: 30px;
+        height: 30px;
         background-color: #FFFFFF;
         box-sizing: border-box;
-        line-height: 50px;
+        line-height: 30px;
         padding-left: 10px;
         a{
           color: #000000;
