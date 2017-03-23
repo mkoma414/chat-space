@@ -1,3 +1,4 @@
+$notice: 0;
 .notice{
   height: 30px;
   width: 100vw;
@@ -5,10 +6,13 @@
   background-color: #38AEF0;
   color: #FFFFFF;
   text-align: center;
+  $notice: 1;
 }
 .left-content{
   width: 300px;
-  height: calc(100vh - 30px);
+  @if $notice == 0{
+    height: 100vh;
+  }
   float: left;
   box-sizing: border-box;
   &__name{
@@ -36,6 +40,9 @@
   }
   &__group-list{
     height: calc(100vh - 130px);
+    @if $notice == 0{
+      height: calc(100vh - 100px);
+    }
     background-color: #2f3e51;
     padding: 0 20px;
     box-sizing: border-box;
@@ -60,6 +67,8 @@
 .right-content{
   width: calc(100vw - 300px);
   height: calc(100vh - 30px);
+  height: 100%;
+  background-color: #FAFAFA;
   float: left;
   box-sizing: border-box;
   &__group-name{
@@ -73,7 +82,6 @@
       &--name{
         font-size: 20px;
         color: #333333;
-       // padding-top: 35px;
       }
       &--member{
         font-size: 12px;
@@ -98,6 +106,9 @@
   }
   &__messages{
     height: calc(100vh - 220px);
+    @if $notice == 0{
+      height: calc(100vh - 190px);
+    }
     padding-left: 40px;
     padding-top: 46px;
     background-color: #FAFAFA;

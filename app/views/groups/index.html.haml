@@ -3,8 +3,9 @@
   %head
     %meta{charset: "utf-8"}
   %body
-    .notice
-      チャットグループが作成されました
+    - if notice
+      .notice
+        = notice
     .left-content
       .left-content__name
         koma
