@@ -1,6 +1,10 @@
-.notice
-  = alert
-  = notice
+- if notice
+  .notice
+    = notice
+- if alert
+  .alert
+    = alert
+
 #account-page.account-page
   .account-page__inner.clearfix
     .account-page__inner--left.account-page__header
