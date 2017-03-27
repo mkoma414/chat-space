@@ -17,8 +17,8 @@
         %a{:href => new_group_path}
           %i.fa.fa-pencil-square-o.left-content__name--edit
       .left-content__group-list
-        .left-content__group-list__group
-          = render partial: "groups/group", collection: @groups
+        / .left-content__group-list__group
+        = render partial: "groups/group", collection: @groups
     .right-content
       .right-content__group-name
         .right-content__group-name__content
