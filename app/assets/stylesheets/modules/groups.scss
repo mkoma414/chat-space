@@ -20,6 +20,7 @@ $notice: 0;
 .left-content{
   width: 300px;
   height: 100vh;
+  overflow: scroll;
   @if $notice == 1{
     height: calc(100vh - 30px);
   }
@@ -33,6 +34,7 @@ $notice: 0;
     font-weight: bold;
     color: #FFFFFF;
     padding: 0 20px;
+    box-sizing: border-box;
     &--setting{
       display: block;
       float: right;
@@ -54,11 +56,33 @@ $notice: 0;
       height: calc(100vh - 130px);
     }
     background-color: #2f3e51;
-    padding: 0 20px;
+    // padding: 0 20px;
     box-sizing: border-box;
     &__group{
       height: 100px;
       background-color: #2f3e51;
+      position: relative;
+      box-sizing: border-box;
+      padding: 0 20px;
+      a{
+        display: block;
+        height: 100px;
+        width: 300px;
+        position: absolute;
+        top: 0;
+        left: -40px;
+      }
+      &:hover{
+        // opacity: 0.5;
+        // background-color:  rgba(47, 62, 81, 0.1);
+        width: 300px;
+        // position: absolute;
+        // left: 0;
+        // top: 0;
+        background-color: rgb(67, 82, 101);
+        //81
+        // background-color: rgba(0,0,255,1);
+      }
       &--name{
         font-size: 15px;
         color: #FFFFFF;

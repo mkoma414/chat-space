@@ -14,19 +14,11 @@
         koma
         %a{:href => edit_user_registration_path}
           %i.fa.fa-cog.left-content__name--setting
-        %a{:href => "http://www.yahoo.co.jp"}
+        %a{:href => new_group_path}
           %i.fa.fa-pencil-square-o.left-content__name--edit
       .left-content__group-list
-        .left-content__group-list__group
-          %ul
-            %li.left-content__group-list__group--name
-              test_group
-            %li.left-content__group-list__group--message
-              まだメッセージはありません
-            %li.left-content__group-list__group--name
-              test_group2
-            %li.left-content__group-list__group--message
-              まだメッセージはありません
+        / .left-content__group-list__group
+        = render partial: "groups/group", collection: @groups
     .right-content
       .right-content__group-name
         .right-content__group-name__content
