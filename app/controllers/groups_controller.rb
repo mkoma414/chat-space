@@ -9,14 +9,11 @@ class GroupsController < ApplicationController
   end
 
   def create
-    # binding.pry
     Group.create(group_params)
     redirect_to root_path
   end
 
   def edit
-    @groups = Group.find(params[:id])
-    # binding.pry
   end
 
   def update

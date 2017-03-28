@@ -1,8 +1,7 @@
 .left-content__group-list__group
-  / %a{href: "http://www.yahoo.co.jp"}
-  = link_to "", group_messages_path(group)
   %ul
     %li.left-content__group-list__group--name
       = group.name
     %li.left-content__group-list__group--message
       まだメッセージはありません
+    = link_to "", group_messages_path(group)
