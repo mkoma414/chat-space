@@ -18,41 +18,43 @@
           %i.fa.fa-pencil-square-o.left-content__name--edit
       .left-content__group-list
         / .left-content__group-list__group
-        = render partial: "groups/group", collection: @groups
+        - if @groups
+          = render partial: "groups/group", collection: @groups
     .right-content
-      .right-content__group-name
-        .right-content__group-name__content
-          .right-content__group-name__content--name
-            2nd グループ
-          .right-content__group-name__content--member
-            members: koma
-        .right-content__group-name--edit
-          Edit
-      .right-content__messages
-        %ul
-          %li.right-content__messages--name
-            koma
-          %li.right-content__messages--date
-            2017/03/10 08:54:58
-          %li.right-content__messages--text
-            最初の投稿
-          %li.right-content__messages--name
-            koma
-          %li.right-content__messages--date
-            2017/03/10 08:54:58
-          %li.right-content__messages--text
-            ２つ目の投稿
-          %li.right-content__messages--name
-            koma
-          %li.right-content__messages--date
-            2017/03/10 08:54:58
-          %li.right-content__messages--text
-            ３つ目の投稿
-      .right-content__post
-        .right-content__post__text-area
-          %textarea.right-content__post__text-area--text{:placeholder => "type a message"}
-          .right-content__post__text-area--pict-icon
-            %a{:href => "http://www.yahoo.co.jp"}
-              %i.fa.fa-file-image-o
-        .right-content__post__send
-          Send
+      / .right-content__group-name
+      /   .right-content__group-name__content
+      /     .right-content__group-name__content--name
+      /       2nd グループ
+      /     .right-content__group-name__content--member
+      /       members: koma
+      /   .right-content__group-name--edit
+      /     / =binding.pry
+      /     %a{href: edit_group_path(id: 1)}Edit
+      / .right-content__messages
+      /   %ul
+      /     %li.right-content__messages--name
+      /       koma
+      /     %li.right-content__messages--date
+      /       2017/03/10 08:54:58
+      /     %li.right-content__messages--text
+      /       最初の投稿
+      /     %li.right-content__messages--name
+      /       koma
+      /     %li.right-content__messages--date
+      /       2017/03/10 08:54:58
+      /     %li.right-content__messages--text
+      /       ２つ目の投稿
+      /     %li.right-content__messages--name
+      /       koma
+      /     %li.right-content__messages--date
+      /       2017/03/10 08:54:58
+      /     %li.right-content__messages--text
+      /       ３つ目の投稿
+      / .right-content__post
+      /   .right-content__post__text-area
+      /     %textarea.right-content__post__text-area--text{:placeholder => "type a message"}
+      /     .right-content__post__text-area--pict-icon
+      /       %a{:href => "http://www.yahoo.co.jp"}
+      /         %i.fa.fa-file-image-o
+      /   .right-content__post__send
+      /     Send

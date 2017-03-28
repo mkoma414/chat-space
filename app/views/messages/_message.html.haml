@@ -1,0 +1,8 @@
+/ .right-content__messages
+%ul
+  %li.right-content__messages--name
+    = message.user.name
+  %li.right-content__messages--date
+    = message.created_at
+  %li.right-content__messages--text
+    = message.body

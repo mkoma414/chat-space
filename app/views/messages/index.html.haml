@@ -1,1 +1,60 @@
-あああ
+!!!
+%html{lang: "ja"}
+  %head
+    %meta{charset: "utf-8"}
+  %body
+    - if notice
+      .notice
+        = notice
+    - if alert
+      .alert
+        = alert
+    .left-content
+      .left-content__name
+        koma
+        %a{:href => edit_user_registration_path}
+          %i.fa.fa-cog.left-content__name--setting
+        %a{:href => new_group_path}
+          %i.fa.fa-pencil-square-o.left-content__name--edit
+      .left-content__group-list
+        / .left-content__group-list__group
+        = render partial: "groups/group", collection: @groups
+    .right-content
+      .right-content__group-name
+        .right-content__group-name__content
+          .right-content__group-name__content--name
+            =@group.name
+          .right-content__group-name__content--member
+            members:
+            = @user_list
+        .right-content__group-name--edit
+          %a{href: edit_group_path(@group)}Edit
+      .right-content__messages
+        = render partial: "messages/message", collection: @messages
+      /   %ul
+      /     %li.right-content__messages--name
+      /       koma
+      /     %li.right-content__messages--date
+      /       2017/03/10 08:54:58
+      /     %li.right-content__messages--text
+      /       最初の投稿
+      /     %li.right-content__messages--name
+      /       koma
+      /     %li.right-content__messages--date
+      /       2017/03/10 08:54:58
+      /     %li.right-content__messages--text
+      /       ２つ目の投稿
+      /     %li.right-content__messages--name
+      /       koma
+      /     %li.right-content__messages--date
+      /       2017/03/10 08:54:58
+      /     %li.right-content__messages--text
+      /       ３つ目の投稿
+      .right-content__post
+        .right-content__post__text-area
+          %textarea.right-content__post__text-area--text{:placeholder => "type a message"}
+          .right-content__post__text-area--pict-icon
+            %a{:href => "http://www.yahoo.co.jp"}
+              %i.fa.fa-file-image-o
+        .right-content__post__send
+          Send
