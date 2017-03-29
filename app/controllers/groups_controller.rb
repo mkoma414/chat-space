@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
 
   def index
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
   def new
@@ -9,14 +9,11 @@ class GroupsController < ApplicationController
   end
 
   def create
-    # binding.pry
     Group.create(group_params)
     redirect_to root_path
   end
 
   def edit
-    @groups = Group.find(1)
-    # binding.pry
   end
 
   def update

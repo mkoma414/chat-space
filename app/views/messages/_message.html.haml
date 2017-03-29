@@ -1,0 +1,7 @@
+%ul
+  %li.right-content__messages--name
+    = message.user.name
+  %li.right-content__messages--date
+    = message.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S')
+  %li.right-content__messages--text
+    = message.body

@@ -1,0 +1,6 @@
+.left-content__name
+  = current_user.name
+  %a{:href => edit_user_registration_path}
+    %i.fa.fa-cog.left-content__name--setting
+  %a{:href => new_group_path}
+    %i.fa.fa-pencil-square-o.left-content__name--edit
