@@ -23,6 +23,9 @@
         = render partial: "messages/message", collection: @current_group.messages
       .right-content__post
         = form_for([@current_group, @message]) do |f|
+          - if @message.errors.any?
+            aaa
+          
           .right-content__post__text-area
             =f.text_area :body, class: "right-content__post__text-area--text"
             %a.right-content__post__text-area--pict-icon{:href => "http://www.yahoo.co.jp"}
