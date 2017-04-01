@@ -12,21 +12,19 @@
       .right-content__group-name
         .right-content__group-name__content
           .right-content__group-name__content--name
-            =@group.name
+            =@current_group.name
           .right-content__group-name__content--member
             members:
-            - @group.users.each do |user|
+            - @current_group.users.each do |user|
               = user.name
         .right-content__group-name--edit
-          / %a{href: edit_group_path(@group)}Edit
-          =link_to "Edit", edit_group_path(@group)
+          =link_to "Edit", edit_group_path(@current_group)
       .right-content__messages
-        = render partial: "messages/message", collection: @messages
+        = render partial: "messages/message", collection: @current_group.messages
       .right-content__post
-        .right-content__post__text-area
-          %textarea.right-content__post__text-area--text{:placeholder => "type a message"}
-          .right-content__post__text-area--pict-icon
-            %a{:href => "http://www.yahoo.co.jp"}
+        = form_for([@current_group, @message]) do |f|
+          .right-content__post__text-area
+            =f.text_area :body, class: "right-content__post__text-area--text"
+            %a.right-content__post__text-area--pict-icon{:href => "http://www.yahoo.co.jp"}
               %i.fa.fa-file-image-o
-        .right-content__post__send
-          Send
+          =f.submit "Send", class: " right-content__post__send"
