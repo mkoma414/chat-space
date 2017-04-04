@@ -9,7 +9,6 @@ FactoryGirl.define do
     email                 Faker::Internet.email
     password              password
     password_confirmation password
-    # confirmed_at          "2017-03-24 16:30:30"
     confirmed_at          DateTime.now
 
     after(:create) do |user|
