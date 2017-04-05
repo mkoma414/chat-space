@@ -6,15 +6,12 @@ class MessagesController < ApplicationController
   end
 
   def create
-    message = Message.new(message_params)
-    message.save
-    if message.errors.any?
-      flash[:alert] = message.errors.full_messages[0].sub(/"/, "")
+    @message = Message.new(message_params)
+    @message.save
+    if @message.errors.any?
+      flash[:alert] = @message.errors.full_messages[0].sub(/"/, "")
     end
-    redirect_to :back
-  end
-
-  def update
+    # redirect_to :back
   end
 
   private
