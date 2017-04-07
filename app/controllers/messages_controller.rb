@@ -7,11 +7,18 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.save
-    if @message.errors.any?
+
+    if @message.save
+      respond_to do |format|
+        message_data = {user_name: @message.user.name,
+                        date: @message.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S'),
+                        body: @message.body}
+        format.html { redirect_to :back }
+        format.json { render json: message_data }
+      end
+    else
       flash[:alert] = @message.errors.full_messages[0].sub(/"/, "")
     end
-    # redirect_to :back
   end
 
   private
