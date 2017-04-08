@@ -10,9 +10,6 @@ class MessagesController < ApplicationController
 
     if @message.save
       respond_to do |format|
-        message_data = {user_name: @message.user.name,
-                        date: @message.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S'),
-                        body: @message.body}
         format.html { redirect_to :back }
         format.json { render json: message_data }
       end
@@ -24,5 +21,11 @@ class MessagesController < ApplicationController
   private
   def message_params
     params.require(:message).permit(:body, :image).merge(group_id: params[:group_id], user_id: current_user.id)
+  end
+
+  def message_data
+    {user_name: @message.user.name,
+     date: @message.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S'),
+     body: @message.body}
   end
 end
