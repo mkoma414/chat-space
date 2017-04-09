@@ -7,15 +7,25 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.save
-    if @message.errors.any?
+
+    if @message.save
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.json { render json: message_data }
+      end
+    else
       flash[:alert] = @message.errors.full_messages[0].sub(/"/, "")
     end
-    # redirect_to :back
   end
 
   private
   def message_params
     params.require(:message).permit(:body, :image).merge(group_id: params[:group_id], user_id: current_user.id)
+  end
+
+  def message_data
+    {user_name: @message.user.name,
+     date: @message.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S'),
+     body: @message.body}
   end
 end
