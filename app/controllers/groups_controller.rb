@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @groups = Group.new
+    @group = Group.new
   end
 
   def create
@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:id])
   end
 
   def update

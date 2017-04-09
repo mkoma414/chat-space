@@ -4,4 +4,7 @@
     %li.left-content__group-list__group--name
       = group.name
     %li.left-content__group-list__group--message
-      まだメッセージはありません
+      - if group.messages.last
+        = group.messages.last.body
+      - else
+        まだメッセージはありません
