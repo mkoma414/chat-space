@@ -1,3 +1,56 @@
+.add_member_button{
+  border-style: none;
+  background-color: white;
+  font-size: 12pt;
+  color: #38aef0;
+  cursor: pointer;
+  float: right;
+  margin-top: 6px;
+}
+
+.chat_member_button{
+  border-style: none;
+  background-color: white;
+  font-size: 12pt;
+  color: #E06049;
+  cursor: pointer;
+  float: right;
+  margin-top: 6px;
+}
+
+#user-search-result{
+  // width: 600px;
+  // height: 500px;
+  float: right;
+  margin-top: -50px;
+}
+
+.match_users{
+  width: 630px;
+  height: 40px;
+  line-height: 40px;
+  float: right;
+  padding-left: 15px;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.chat_member{
+  width: 630px;
+  height: 40px;
+  line-height: 40px;
+  float: right;
+  padding-left: 15px;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.clearfix:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
 $notice: 0;
 .notice{
   height: 30px;

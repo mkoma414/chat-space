@@ -1,4 +1,5 @@
-= form_for @group do |f|
+= form_for @group , html:{ id: "group_form" } do |f|
+  %input#post_data{:name => "users", :type => "hidden", :value => ""}
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :name, "グループ名", class:"chat-group-form__label"
@@ -6,12 +7,20 @@
       = f.text_field :name, id:'chat_group_name', class: 'chat-group-form__input'
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      = f.label "チャットメンバー", class:"chat-group-form__label"
+      = f.label "チャットメンバーを追加", class:"chat-group-form__label"
+    .chat-group-form__field--right
+      = text_field_tag :name, "", class: 'chat-group-form__input', id: 'user-input'
+  .chat-group-form__field.clearfix
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
-        = f.collection_check_boxes(:user_ids, User.all, :id, :name)
-        #user-search-result
+      #user-search-result.clearfix
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
+      = f.label "チャットメンバー", class:"chat-group-form__label"
+    .chat-group-form__field--right.chat_member
+      = current_user.name
+    .chat-group-form__field--left
+    #add_user
+  .chat-group-form__field.clearfix
     .chat-group-form__field--right
-      = f.submit "Save", class:"chat-group-form__action-btn"
+      = f.submit "Save", class: "chat-group-form__action-btn"
