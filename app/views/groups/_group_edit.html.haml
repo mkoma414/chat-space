@@ -1,17 +1,27 @@
-= form_for current_user.groups.find(params[:id]) do |f|
+= form_for @group , html:{ id: "group_form" } do |f|
+  =hidden_field_tag 'group[name]', "", id: "post_name"
+  =hidden_field_tag 'group[user_ids][]', "",  multiple: true, id: "post_id"
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :name, "グループ名", class:"chat-group-form__label"
     .chat-group-form__field--right
-      = f.text_field :name, id:'chat_group_name', class: 'chat-group-form__input'
+      = f.text_field_tag :name, "", id:'chat_group_name', class: 'chat-group-form__input'
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label "チャットメンバーを追加", class:"chat-group-form__label"
+    .chat-group-form__field--right
+      = text_field_tag :name, "", class: 'chat-group-form__input', id: 'user-input'
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--right
+      .chat-group-form__search.clearfix
+      #user-search-result.clearfix
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label "チャットメンバー", class:"chat-group-form__label"
-    .chat-group-form__field--right
-      .chat-group-form__search.clearfix
-        = f.collection_check_boxes(:user_ids, User.all, :id, :name)
-        #user-search-result
-  .chat-group-form__field.clearfix
+    .chat-group-form__field--right.chat_member
+      = current_user.name
     .chat-group-form__field--left
+    #add_user
+  .chat-group-form__field.clearfix
     .chat-group-form__field--right
-      = f.submit "Save", class:"chat-group-form__action-btn"
+      = f.submit "Save", class: "chat-group-form__action-btn"
