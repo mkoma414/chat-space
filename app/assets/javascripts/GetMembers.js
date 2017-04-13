@@ -74,6 +74,7 @@ $(function(){
     if (index >= 0){
       selected_user.splice(index, 1);
     }
+    set_value_to_hidden_field();
   });
 })
 
