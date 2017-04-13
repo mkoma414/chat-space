@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
 
   def create
     Group.create(group_params)
+    redirect_to root_path
   end
 
   def edit
@@ -29,14 +30,11 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    tmp = params.require(:group).permit(:name, user_ids:[])
-    if(tmp[:user_ids])
-      tmp[:user_ids].push(current_user.id)
-      tmp
-    else
-      tmp.merge({ user_ids: [current_user.id] })
-      tmp
-    end
+    tmp_string = params[:group][:user_ids][0]
+    tmp_array = tmp_string.split(",")
+    tmp_array.push(current_user.id)
+    params[:group][:user_ids]=tmp_array
+    params.require(:group).permit(:name, user_ids:[])
   end
 
   def user_data
