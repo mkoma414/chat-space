@@ -74,7 +74,6 @@ $(function(){
     if (index >= 0){
       selected_user.splice(index, 1);
     }
-    console.log(selected_user);
   });
 })
 
