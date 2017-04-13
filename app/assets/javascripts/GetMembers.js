@@ -37,7 +37,7 @@ $(function(){
   }
 
   //ユーザー名が入力された時の処理
-  $(document).on('keydown', '#user-input', function(e){
+  $(document).on('keydown', '#user-input', function(){
     $.ajax({
       method: 'GET',
       url: '/groups/new',
@@ -69,12 +69,12 @@ $(function(){
 
   //削除ボタンがクリックされた時の処理
   $(document).on('click', '.chat_member_button', function(e){
-    e.preventDefault();
     $(this).parent().remove();
     index = $.inArray(this.value, selected_user);
     if (index >= 0){
       selected_user.splice(index, 1);
     }
+    console.log(selected_user);
   });
 })
 
