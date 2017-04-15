@@ -30,7 +30,7 @@ $(function(){
     });
   });
 
-  $(document).on('click', '.right-content__post__text-area--pict-icon', function(e){
+  $(document).on('click', '.right-content__post__text-area--pict-icon', function(){
     $('#image_upload').click();
   });
 
