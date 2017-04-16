@@ -19,7 +19,7 @@
               = user.name
         .right-content__group-name--edit
           =link_to "Edit", edit_group_path(@current_group)
-      .right-content__messages
+      .right-content__messages#add_here
         = render partial: "messages/message", collection: @current_group.messages.desc
       .right-content__post
         = form_for([@current_group, @message], html:{ id: "message_form" }) do |f|

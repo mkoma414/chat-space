@@ -34,7 +34,8 @@ class MessagesController < ApplicationController
   def message_data
     {user_name: @message.user.name,
      date: @message.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S'),
-     body: @message.body}
+     body: @message.body,
+     image: @message.image.url}
   end
 
   def new_message

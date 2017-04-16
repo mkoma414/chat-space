@@ -10,10 +10,13 @@ $(function(){
 
   function appendNewMessage(data){
     var html = "<ul><li class='right-content__messages--name'>" + data.name +
-                "</li><li class='right-content__messages--date'>" + data.create_date +
-                "</li><li class='right-content__messages--text'>" + data.text
+                "</li><li class='right-content__messages--date'>" + data.create_date + "</li>" +
+                "<li class='right-content__messages--text'>";
+    if(data.text){
+      html = html + data.text + "</li>" ;
+    }
     if(data.image){
-      html = html + "<br/>" + "<img height = '200' src='" + data.image + "'>";
+      html = html + "<img height = '200' src='" + data.image + "'>";
     }
     html += "</li></ul>";
 

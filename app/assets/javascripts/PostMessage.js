@@ -1,11 +1,20 @@
 $(function(){
   function buildHTML(message_data){
-    var html = '<ul><li class="right-content__messages--name">' + message_data.user_name + '</li>' +
-    '<li class="right-content__messages--date">' + message_data.date + '</li>' +
-    '<li class="right-content__messages--text">' + message_data.body + '</li></ul>';
 
-    return html;
+    var html = "<ul><li class='right-content__messages--name'>" + message_data.user_name + "</li>" +
+                  "<li class='right-content__messages--date'>" + message_data.date + "</li>" +
+                  "<li class='right-content__messages--text'>";
+      if(message_data.body){
+        html = html  + message_data.body;
+      }
+      if(message_data.image){
+        html = html + "<br><img height = '200' class = 'right-content__messages--image src='" + message_data.image + "'><br>";
+      }
+      html += "</li></ul>";
+
+      return html;
   }
+
   $(document).on('submit', '#message_form', function(e){
     e.preventDefault();
 
@@ -20,7 +29,7 @@ $(function(){
       data: formData,
       dataType: 'json',
       success: function(data) {
-        $('.right-content__messages').append(buildHTML(data));
+        $('#add_here').append(buildHTML(data));
         $('.right-content__post__text-area--text').val("");
         $('.right-content__post__send').prop("disabled", false);
       },
