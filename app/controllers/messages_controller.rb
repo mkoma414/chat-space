@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
 
   def message_data
     {user_name: @message.user.name,
-     date: @message.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S'),
+     date: to_timezone_in_tokyo(@message.created_at),
      body: @message.body,
      image: @message.image.url}
   end
@@ -45,10 +45,15 @@ class MessagesController < ApplicationController
     new_message_data = []
     i=0
     new_message.each do |message|
-      tmp_hash = { text: message.body, name: message.user.name, image: message.image.url, create_date: message.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S') }
+      tmp_hash = { text: message.body, name: message.user.name, image: message.image.url, create_date: to_timezone_in_tokyo(message.created_at) }
       new_message_data[i] = tmp_hash
     end
     new_message_data
+  end
+
+  private
+  def to_timezone_in_tokyo(before_time)
+    before_time.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S')
   end
 
 end

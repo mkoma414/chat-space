@@ -32,6 +32,7 @@ $(function(){
         $('#add_here').append(buildHTML(data));
         $('.right-content__post__text-area--text').val("");
         $('.right-content__post__send').prop("disabled", false);
+        set_last_update();
       },
       error: function(error) {
         alert(error);

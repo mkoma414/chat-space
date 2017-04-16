@@ -1,5 +1,3 @@
-$(function(){
-
   var timeNow = new Date();
   var lastUpdate = {};
 
@@ -7,6 +5,8 @@ $(function(){
     timeNow = new Date();
     lastUpdate = {date: Math.round(timeNow.getTime()/1000)};
   }
+
+$(function(){
 
   function appendNewMessage(data){
     var html = "<ul><li class='right-content__messages--name'>" + data.name +
