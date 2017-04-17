@@ -6,7 +6,21 @@
     lastUpdate = {date: Math.round(timeNow.getTime()/1000)};
   }
 
-$(function(){
+    function checkNewMessage(){
+    $.ajax({
+      method: 'GET',
+      url: location.href,
+      contentType: false,
+      dataType: 'json',
+      data: {last_update: lastUpdate}
+    }).done(function(data){
+        for(var i=0; i<data.length; i++){
+          appendNewMessage(data[i]);
+        }
+    }).fail(function(error){
+      alert("error");
+    });
+  }
 
   function appendNewMessage(data){
     var html = "<ul><li class='right-content__messages--name'>" + data.name +
@@ -24,23 +38,8 @@ $(function(){
     set_last_update();
   }
 
-  function checkNewMessage(){
-    $.ajax({
-      method: 'GET',
-      url: location.href,
-      contentType: false,
-      dataType: 'json',
-      data: {last_update: lastUpdate}
-    }).done(function(data){
-        for(var i=0; i<data.length; i++){
-          appendNewMessage(data[i]);
-        }
-    }).fail(function(error){
-      alert("error");
-    });
-  }
+$(function(){
 
-  //ここからプログラムのスタート
   set_last_update();
   setInterval(checkNewMessage, 3000);
 

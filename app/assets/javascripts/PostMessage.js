@@ -29,7 +29,7 @@ $(function(){
       data: formData,
       dataType: 'json',
       success: function(data) {
-        $('#add_here').append(buildHTML(data));
+        checkNewMessage();
         $('.right-content__post__text-area--text').val("");
         $('.right-content__post__send').prop("disabled", false);
         set_last_update();
