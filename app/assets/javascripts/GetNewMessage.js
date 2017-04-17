@@ -7,6 +7,11 @@
   }
 
     function checkNewMessage(){
+      url = window.location.href;
+      if(url.slice(-8) != "messages"){
+        return;
+      }
+
     $.ajax({
       method: 'GET',
       url: location.href,
