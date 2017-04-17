@@ -54,7 +54,7 @@ $(function(){
   });
 
   //ユーザーの追加がクリックされた時の処理
-  $(document).on('click', '.add_member_button', function(e){
+  $(document).on('click', '.add_member_button', function(){
 
     html = '<div class="chat-group-form__field--right chat_member">' + get_user_name(this.value) +
     '<button class="chat_member_button" value="' + this.value + '">削除' + '</button></div>'
@@ -68,7 +68,7 @@ $(function(){
   });
 
   //削除ボタンがクリックされた時の処理
-  $(document).on('click', '.chat_member_button', function(e){
+  $(document).on('click', '.chat_member_button', function(){
     $(this).parent().remove();
     index = $.inArray(this.value, selected_user);
     if (index >= 0){

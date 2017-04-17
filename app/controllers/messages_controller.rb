@@ -1,8 +1,16 @@
+require 'time'
+
 class MessagesController < ApplicationController
+
   def index
     @groups = current_user.groups
     @current_group = Group.includes(:messages).find(params[:group_id])
     @message = Message.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: new_message }
+    end
   end
 
   def create
@@ -25,7 +33,27 @@ class MessagesController < ApplicationController
 
   def message_data
     {user_name: @message.user.name,
-     date: @message.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S'),
-     body: @message.body}
+     date: to_timezone_in_tokyo(@message.created_at),
+     body: @message.body,
+     image: @message.image.url}
   end
+
+  def new_message
+    start_time = Time.at(params.dig(:last_update, :date).to_i)
+    new_message = Message.created_after(start_time).group_no(params[:group_id].to_i)
+
+    new_message_data = []
+    i=0
+    new_message.each do |message|
+      tmp_hash = { text: message.body, name: message.user.name, image: message.image.url, create_date: to_timezone_in_tokyo(message.created_at) }
+      new_message_data[i] = tmp_hash
+    end
+    new_message_data
+  end
+
+  private
+  def to_timezone_in_tokyo(before_time)
+    before_time.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S')
+  end
+
 end
