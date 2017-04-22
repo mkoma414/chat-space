@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.7.1'
 
-set :application, 'chat_space'
+set :application, 'chat-space'
 set :repo_url, 'git@github.com:mkoma414/chat-space.git'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
@@ -13,8 +13,8 @@ set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/aws-ec2.pem']
 
 set :default_env,{
-  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
-  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+    aws_access_key_id: ENV['ACCESS_KEY_ID'],
+    aws_secret_access_key: ENV['SECRET_ACCESS_KEY'],
 }
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
