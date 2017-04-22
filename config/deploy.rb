@@ -12,6 +12,11 @@ set :rbenv_ruby, '2.3.1'
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/aws-ec2.pem']
 
+set :default_env,{
+  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+}
+
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 
