@@ -13,8 +13,9 @@ set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/aws-ec2.pem']
 
 set :default_env,{
-    aws_access_key_id: ENV['ACCESS_KEY_ID'],
-    aws_secret_access_key: ENV['SECRET_ACCESS_KEY'],
+    ACCESS_KEY_ID: ENV['ACCESS_KEY_ID'],
+    SECRET_ACCESS_KEY: ENV['SECRET_ACCESS_KEY'],
+    CHAT_DB_PASS: ENV['CHAT_DB_PASS']
 }
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
