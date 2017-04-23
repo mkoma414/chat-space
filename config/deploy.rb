@@ -15,10 +15,12 @@ set :ssh_options, auth_methods: ['publickey'],
 set :default_env,{
     ACCESS_KEY_ID: ENV['ACCESS_KEY_ID'],
     SECRET_ACCESS_KEY: ENV['SECRET_ACCESS_KEY'],
-    CHAT_DB_PASS: ENV['CHAT_DB_PASS']
+    CHAT_DB_PASS: ENV['CHAT_DB_PASS'],
+    MAIL_PASS: ENV["MAIL_PASS"]
 }
 
-set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
+# set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
+set :unicorn_pid, -> { "/var/www/chat-space/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 
 after 'deploy:publishing', 'deploy:restart'
