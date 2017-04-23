@@ -94,7 +94,7 @@ Rails.application.configure do
     :domain => 'smtp.gmail.com',
     :user_name => "kommasa@gmail.com",
     :password => ENV["MAIL_PASS"],
-    :authentication => 'plain'
+    :authentication => 'plain',
     :enable_starttls_auto => true
   }
 end
