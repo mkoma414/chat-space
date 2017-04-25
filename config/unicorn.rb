@@ -1,7 +1,7 @@
-# app_path = File.expand_path('../../../', __FILE__)
-app_path = "/var/www/chat-space"
+app_path = File.expand_path('../../../', __FILE__)
+# app_path = "/var/www/chat-space"
 
-# worker_processes 1
+worker_processes 1
 
 working_directory "#{app_path}/current"
 pid "#{app_path}/tmp/pids/unicorn.pid"
