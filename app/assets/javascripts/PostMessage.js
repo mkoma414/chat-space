@@ -19,6 +19,7 @@ $(function(){
     e.preventDefault();
 
     var form = $('#message_form').get()[0];
+    console.log(form);
     var formData = new FormData( form );
 
     $.ajax({
